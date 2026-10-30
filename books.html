@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Alexandria Digital Library | Catalogue</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Alexandria Library</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="books.html" class="active">Catalogue</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="signup.html" class="btn btn-primary btn-register">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="catalogue-header">
+
+            <h1>Book Catalogue</h1>
+
+            <p>Explore our collection and find your next favorite book.</p>
+
+        </section>
+
+        <section class="search-section">
+            <h2>Search Books</h2>
+
+            <div class="search-filters">
+
+                <div class="filter-group">
+                    <label for="book-title">Book Title</label>
+                    <input type="text" id="book-title" name="title" placeholder="Enter book title">
+                </div>
+
+                <div class="filter-group">
+                    <label for="book-author">Author</label>
+                    <input type="text" id="book-author" name="author" placeholder="Enter author name">
+                </div>
+
+                <div class="filter-group">
+                    <label for="book-category">Category</label>
+                    <select id="book-category" name="category">
+
+                        <option value="">All Categories</option>
+
+                        <option value="programming">Programming</option>
+
+                        <option value="networking">Networking</option>
+
+                        <option value="database">Database</option>
+
+                        <option value="science">Science</option>
+
+                        <option value="literature">Literature</option>
+
+                    </select>
+                </div>
+
+                <button type="button" class="btn btn-primary">Search</button>
+
+            </div>
+        </section>
+
+        <section class="books-section">
+            <h2>Books Collection</h2>
+
+            <p class="section-description">Browse our books and explore their details.</p>
+
+            <div class="grid">
+                <article class="card">
+
+                    <div>
+                        <span class="badge badge-available">Available</span>
+
+                        <p class="book-id">CS-101</p>
+
+                        <h3>Clean Code</h3>
+
+                        <p class="book-author">By Robert C. Martin</p>
+
+                        <p class="book-category">Category: Programming</p>
+
+                        <p class="book-description">A handbook of agile software craftsmanship focusing on clean code
+                            principles.</p>
+                    </div>
+
+                    <a href="book-details.html" class="btn btn-primary">View Details</a>
+
+                </article>
+
+                <article class="card">
+
+                    <div>
+                        <span class="badge badge-borrowed">Borrowed</span>
+
+                        <p class="book-id">NET-203</p>
+
+                        <h3>Computer Networking</h3>
+
+                        <p class="book-author">By Andrew S. Tanenbaum</p>
+
+                        <p class="book-category">Category: Networking</p>
+
+                        <p class="book-description">An introduction to computer networks, protocols and network
+                            architecture.</p>
+                    </div>
+
+                    <a href="book-details.html" class="btn btn-primary">View Details</a>
+
+                </article>
+
+                <article class="card">
+
+                    <div>
+                        <span class="badge badge-borrowed">Borrowed</span>
+
+                        <p class="book-id">NET-202</p>
+
+                        <h3>Pro C# 10 with .NET 6</h3>
+
+                        <p class="book-author">By Andrew Troelsen</p>
+
+                        <p class="book-category">Category: Programming</p>
+
+                        <p class="book-description">Comprehensive coverage of the C# language architecture and practical
+                            framework features.</p>
+                    </div>
+
+                    <a href="book-details.html" class="btn btn-primary">View Details</a>
+
+                </article>
+
+                <article class="card">
+
+                    <div>
+                        <span class="badge badge-available">Available</span>
+
+                        <p class="book-id">DB-303</p>
+
+                        <h3>Database System Concepts</h3>
+
+                        <p class="book-author">By Abraham Silberschatz</p>
+
+                        <p class="book-category">Category: Database</p>
+
+                        <p class="book-description">Learn database design, SQL and database management systems.</p>
+                    </div>
+
+                    <a href="book-details.html" class="btn btn-primary">View Details</a>
+
+                </article>
+
+                <article class="card">
+
+                    <div>
+                        <span class="badge badge-available">Available</span>
+
+                        <p class="book-id">SCI-404</p>
+
+                        <h3>A Brief History of Time</h3>
+
+                        <p class="book-author">By Stephen Hawking</p>
+
+                        <p class="book-category">Category: Science</p>
+
+                        <p class="book-description">Explore the universe, space, time and the mysteries of physics.</p>
+                    </div>
+
+                    <a href="book-details.html" class="btn btn-primary">View Details</a>
+
+                </article>
+
+                <article class="card">
+                    <div>
+                        <span class="badge badge-available">Available</span>
+
+                        <p class="book-id">AI-505</p>
+
+                        <h3>Artificial Intelligence: A Modern Approach</h3>
+
+                        <p class="book-author">By Stuart Russell</p>
+
+                        <p class="book-category">Category: Programming</p>
+
+                        <p class="book-description">
+                            An introduction to artificial intelligence, its concepts,
+                            algorithms and real-world applications.
+                        </p>
+                    </div>
+
+                    <a href="book-details.html" class="btn btn-primary">View Details</a>
+                </article>
+
+                <article class="card">
+                    <div>
+                        <span class="badge badge-borrowed">Borrowed</span>
+
+                        <p class="book-id">LIT-606</p>
+
+                        <h3>Animal Farm</h3>
+
+                        <p class="book-author">By George Orwell</p>
+
+                        <p class="book-category">Category: Literature</p>
+
+                        <p class="book-description">
+                            A classic novel that explores power, politics
+                            and society through an animal fable.
+                        </p>
+                    </div>
+
+                    <a href="book-details.html" class="btn btn-primary">View Details</a>
+                </article>
+
+            </div>
+
+            <section class="empty-state">
+                <div class="empty-icon">
+                    <span>📚</span>
+                </div>
+
+                <h3>Empty State Preview</h3>
+
+                <p>
+                    We couldn't find any books matching your search.
+                    Try another title, author, or category.
+                </p>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+    <div class="container">
+      <p>&copy; 2026 Alexandria Digital Library - IS231 Web Technology Phase 1 Project.</p>
+    </div>
+  </footer>
+</body>
+
+</html>

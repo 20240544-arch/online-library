@@ -14,7 +14,6 @@
   --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 
-/* إعادة التعيين العام */
 * {
   margin: 0;
   padding: 0;
@@ -37,7 +36,6 @@ body {
   margin: 0 auto;
 }
 
-/* شريط التنقل (Navbar) ومحدد الأدوار */
 .navbar {
   background-color: #ffffff;
   border-bottom: 1px solid var(--border-color);
@@ -50,11 +48,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  padding: 16px 0;
 }
 
 .logo {
-  font-size: 1.4rem;
+  font-size: 22.4px;
   font-weight: 700;
   color: var(--primary-color);
   text-decoration: none;
@@ -62,7 +60,7 @@ body {
 
 .nav-links {
   display: flex;
-  gap: 1.2rem;
+  gap: 19.2px;
   align-items: center;
   list-style: none;
 }
@@ -71,7 +69,7 @@ body {
   text-decoration: none;
   color: var(--text-main);
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 15.2px;
   transition: color 0.2s;
 }
 
@@ -80,28 +78,26 @@ body {
   color: var(--secondary-color);
 }
 
-/* مبدل الرتب المخصص للمشروع (Role Switcher) */
 .role-badge {
   background-color: #e0f2fe;
   color: #0369a1;
-  padding: 0.3rem 0.6rem;
+  padding: 4.8px 9.6px;
   border-radius: 4px;
-  font-size: 0.8rem;
+  font-size: 12.8px;
   font-weight: 600;
   border: 1px solid #bae6fd;
 }
 
-/* الأزرار المشتركة */
 .btn {
   display: inline-block;
-  padding: 0.6rem 1.2rem;
+  padding: 9.6px 19.2px;
   border-radius: var(--radius);
   font-weight: 600;
   text-decoration: none;
   border: none;
   cursor: pointer;
   transition: all 0.2s;
-  font-size: 0.95rem;
+  font-size: 15.2px;
 }
 
 .btn-primary {
@@ -122,11 +118,15 @@ body {
   background-color: #cbd5e1;
 }
 
-/* شارات الحالة (Availability Badges) */
+.btn-register {
+    color: white !important;
+    padding: 6.4px 12.8px !important;
+}
+
 .badge {
   display: inline-block;
-  padding: 0.25rem 0.6rem;
-  font-size: 0.75rem;
+  padding: 4px 9.6px;
+  font-size: 12px;
   font-weight: 700;
   border-radius: 9999px;
   text-transform: uppercase;
@@ -146,28 +146,162 @@ body {
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.5rem;
-  margin: 1.5rem 0;
+  gap: 24px;
+  margin: 24px 0;
 }
 
 .card {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
-  padding: 1.25rem;
+  padding: 20px;
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-/* الفوتر */
 footer {
   margin-top: auto;
   background-color: #ffffff;
   border-top: 1px solid var(--border-color);
-  padding: 1.5rem 0;
+  padding: 24px 0;
   text-align: center;
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 14.4px;
+}
+
+.catalogue-header {
+  text-align: center;
+  padding: 48px 16px 32px;
+}
+
+.catalogue-header h1 {
+  color: var(--primary-color);
+  font-size: 35.2px;
+  margin-bottom: 8px;
+}
+
+.catalogue-header p {
+  color: var(--text-muted);
+}
+
+.search-section {
+  background-color: var(--card-bg);
+  padding: 24px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 32px;
+}
+
+.search-section h2 {
+  color: var(--primary-color);
+  margin-bottom: 19.2px;
+}
+
+.search-filters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) auto;
+  gap: 16px;
+  align-items: end;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6.4px;
+}
+
+.filter-group label {
+  font-weight: 600;
+  font-size: 14.4px;
+}
+
+.filter-group input,
+.filter-group select {
+  width: 100%;
+  padding: 11.2px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-size: 15.2px;
+  background-color: white;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+
+  .search-filters {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+.books-section {
+  margin: 32px 0;
+}
+
+.books-section h2 {
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+
+.section-description {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.book-id {
+  color: var(--text-muted);
+  font-size: 12.8px;
+  margin: 11.2px 0;
+}
+
+.book-author {
+  color: var(--text-muted);
+  font-size: 14.4px;
+  margin: 6.4px 0;
+}
+
+.book-category {
+  color: var(--secondary-color);
+  font-size: 13.6px;
+  font-weight: 600;
+  margin: 8px 0;
+}
+
+.book-description {
+  color: var(--text-muted);
+  font-size: 14.4px;
+  margin: 12.8px 0 16px;
+}
+
+.empty-state {
+  text-align: center;
+  background-color: var(--card-bg);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius);
+  padding: 40px 16px;
+  margin-top: 32px;
+}
+
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.empty-state h3 {
+  color: var(--primary-color);
+  margin-bottom: 11.2px;
+}
+
+.empty-state p {
+  color: var(--text-muted);
+  max-width: 500px;
+  margin: 0 auto;
 }
