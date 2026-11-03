@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexandria Digital Library | Admin Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .admin-header {
+            text-align: center;
+            padding: 40px 16px 25px;
+        }
+
+        .admin-header h1 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .admin-section {
+            background: white;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 32px;
+        }
+
+        .admin-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .admin-top h2 {
+            color: var(--primary-color);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        .books-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            min-width: 750px;
+        }
+
+        .books-table th,
+        .books-table td {
+            padding: 14px 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .books-table th {
+            background-color: #f1f5f9;
+            color: var(--primary-color);
+        }
+
+        .books-table tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .edit-btn {
+            color: white;
+            background-color: var(--secondary-color);
+            padding: 6px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .delete-btn {
+            color: white;
+            background-color: var(--danger);
+            padding: 6px 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .admin-section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="container nav-container">
+        <a href="index.html" class="logo">Alexandria Library</a>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="books.html">Catalogue</a></li>
+                <li><a href="my-borrowed.html">My Borrowed</a></li>
+                <li><a href="admin-books.html" class="active">Admin Dashboard</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html" class="btn btn-primary btn-register">Register</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="admin-header">
+        <h1>Admin Dashboard</h1>
+        <p style="color: var(--text-muted);">
+            Manage books in Alexandria Digital Library.
+        </p>
+    </section>
+
+    <section class="admin-section">
+
+        <div class="admin-top">
+            <h2>Books Management</h2>
+
+            <a href="add-edit-book.html" class="btn btn-primary">
+                + Add New Book
+            </a>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="books-table">
+
+                <thead>
+                <tr>
+                    <th>Book ID</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Category</th>
+                    <th>Availability</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <tr>
+                    <td>CS-101</td>
+                    <td>Clean Code</td>
+                    <td>Robert C. Martin</td>
+                    <td>Programming</td>
+                    <td><span class="badge badge-available">Available</span></td>
+                    <td>
+                        <a href="add-edit-book.html" class="edit-btn">Edit</a>
+                        <button type="button" class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>NET-203</td>
+                    <td>Computer Networking</td>
+                    <td>Andrew S. Tanenbaum</td>
+                    <td>Networking</td>
+                    <td><span class="badge badge-borrowed">Borrowed</span></td>
+                    <td>
+                        <a href="add-edit-book.html" class="edit-btn">Edit</a>
+                        <button type="button" class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>NET-202</td>
+                    <td>Pro C# 10 with .NET 6</td>
+                    <td>Andrew Troelsen</td>
+                    <td>Programming</td>
+                    <td><span class="badge badge-borrowed">Borrowed</span></td>
+                    <td>
+                        <a href="add-edit-book.html" class="edit-btn">Edit</a>
+                        <button type="button" class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>DB-303</td>
+                    <td>Database System Concepts</td>
+                    <td>Abraham Silberschatz</td>
+                    <td>Database</td>
+                    <td><span class="badge badge-available">Available</span></td>
+                    <td>
+                        <a href="add-edit-book.html" class="edit-btn">Edit</a>
+                        <button type="button" class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>SCI-404</td>
+                    <td>A Brief History of Time</td>
+                    <td>Stephen Hawking</td>
+                    <td>Science</td>
+                    <td><span class="badge badge-available">Available</span></td>
+                    <td>
+                        <a href="add-edit-book.html" class="edit-btn">Edit</a>
+                        <button type="button" class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>AI-505</td>
+                    <td>Artificial Intelligence</td>
+                    <td>Stuart Russell</td>
+                    <td>Programming</td>
+                    <td><span class="badge badge-available">Available</span></td>
+                    <td>
+                        <a href="add-edit-book.html" class="edit-btn">Edit</a>
+                        <button type="button" class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>LIT-606</td>
+                    <td>Animal Farm</td>
+                    <td>George Orwell</td>
+                    <td>Literature</td>
+                    <td><span class="badge badge-borrowed">Borrowed</span></td>
+                    <td>
+                        <a href="add-edit-book.html" class="edit-btn">Edit</a>
+                        <button type="button" class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Alexandria Digital Library - IS231 Web Technology Phase 1 Project.</p>
+    </div>
+</footer>
+
+</body>
+</html>

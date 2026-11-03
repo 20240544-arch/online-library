@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexandria Library | Add/Edit Book</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .form-container {
+            max-width: 700px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .form-container h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .form-container p {
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .book-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .book-form label {
+            font-weight: 600;
+        }
+
+        .book-form input,
+        .book-form select,
+        .book-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            font-size: 15px;
+        }
+
+        .book-form textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .form-buttons .btn {
+            text-align: center;
+            flex: 1;
+        }
+
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 20px;
+            }
+
+            .form-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="container nav-container">
+        <a href="index.html" class="logo">Alexandria Library</a>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="books.html">Catalogue</a></li>
+                <li><a href="my-borrowed.html">My Borrowed</a></li>
+                <li><a href="admin-books.html" class="active">Admin Dashboard</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html" class="btn btn-primary btn-register">Register</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <div class="form-container">
+
+        <h1>Add / Edit Book</h1>
+        <p>Enter the book information below.</p>
+
+        <form class="book-form">
+
+            <div>
+                <label for="book-id">Book ID</label>
+                <input type="text" id="book-id" name="book-id"
+                       value="Generated automatically" readonly>
+            </div>
+
+            <div>
+                <label for="title">Book Title *</label>
+                <input type="text" id="title" name="title"
+                       placeholder="Enter book title" required>
+            </div>
+
+            <div>
+                <label for="author">Author *</label>
+                <input type="text" id="author" name="author"
+                       placeholder="Enter author name" required>
+            </div>
+
+            <div>
+                <label for="category">Category *</label>
+                <select id="category" name="category" required>
+                    <option value="">Select Category</option>
+                    <option value="programming">Programming</option>
+                    <option value="networking">Networking</option>
+                    <option value="database">Database</option>
+                    <option value="science">Science</option>
+                    <option value="literature">Literature</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="description">Description *</label>
+                <textarea id="description" name="description"
+                          placeholder="Enter book description" required></textarea>
+            </div>
+
+            <div>
+                <label for="availability">Availability *</label>
+                <select id="availability" name="availability" required>
+                    <option value="available">Available</option>
+                    <option value="borrowed">Borrowed</option>
+                </select>
+            </div>
+
+            <div class="form-buttons">
+                <button type="button" class="btn btn-primary">
+                    Save Book
+                </button>
+
+                <a href="admin-books.html" class="btn btn-secondary">
+                    Cancel
+                </a>
+            </div>
+
+        </form>
+
+    </div>
+
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Alexandria Digital Library - IS231 Web Technology Phase 1 Project.</p>
+    </div>
+</footer>
+
+</body>
+</html>
