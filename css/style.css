@@ -1,4 +1,3 @@
-/* --- متغيرات التصميم الموحدة --- */
 :root {
   --primary-color: #1e3a8a;
   --primary-hover: #172554;
@@ -142,7 +141,7 @@ body {
   color: var(--danger);
 }
 
-/* شبكة الكروت العامة */
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -305,7 +304,60 @@ footer {
   max-width: 500px;
   margin: 0 auto;
 }
-/* ===== My Borrowed Books pag*/
+
+
+.book-details-wrapper {
+    margin: 40px auto;
+    max-width: 900px; 
+    padding: 32px;
+}
+
+.details-flex {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.details-img-col {
+    flex: 0 0 280px; 
+}
+
+.cover-img {
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.details-text-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.details-title {
+    color: var(--primary-color);
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.details-actions {
+    margin-top: 16px;
+    display: flex;
+    gap: 16px;
+}
+
+@media (max-width: 768px) {
+    .details-flex {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .details-actions {
+        justify-content: center;
+    }
+}
+
  
 [hidden] {
   display: none !important;
@@ -315,7 +367,7 @@ footer {
   padding: 6.4px 12.8px;
 }
  
-/* filter*/
+
 .borrowed-filters {
   display: grid;
   grid-template-columns: 2fr 1fr auto;
@@ -323,7 +375,7 @@ footer {
   align-items: end;
 }
  
-/* tit + counter */
+
 .borrowed-summary {
   display: flex;
   justify-content: space-between;
@@ -346,7 +398,7 @@ footer {
   font-size: 14.4px;
 }
  
-/* data */
+
 .borrow-dates {
   display: flex;
   gap: 24px;
@@ -365,7 +417,7 @@ footer {
   font-size: 14.4px;
 }
  
-/* bottom card */
+
 .card-actions {
   display: flex;
   gap: 10px;
@@ -381,13 +433,13 @@ footer {
   cursor: not-allowed;
 }
  
-/* statue*/
+
 .borrowed-card.is-returned {
   border-color: #bbf7d0;
   background-color: #f0fdf4;
 }
  
-/* succ */
+
 .alert {
   display: flex;
   justify-content: space-between;
