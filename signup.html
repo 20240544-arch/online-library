@@ -2,39 +2,9 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="style.css">
-    <title>Login</title>
-
-
-</head>
-
-
-
-
-
-<body>
-
-
-    <div class="signup-box">
-        <div class="signup-header">
-            <header>Sign up</header>
-        </div>
-        <div class="input-box">
-            <input type="text" class="input-field" placeholder="Email" autocomplete="off" required />
-        </div>
-        <div class="input-box">
-            <input type="password" class="input-field" placeholder="Password" autocomplete="off" required />
-        </div>
-        <div class="input-submit">
-            <button class="submit-btn" id="submit" onclick="window.location.href='index.html';"></button>
-            <label for="submit">Sign In</label>
-        </div>
-        <div class="login-link">
-            <p style="color: #1e3a8a">Already have an account ? <a style="color: #1e3a8a" href=login.html>Login</a></p>
-
-        </div>
-    </div>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexandria Digital Library | Sign Up</title>
     <link rel="stylesheet" href="css/style.css">
 
     <style>
@@ -42,123 +12,148 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh
+            min-height: 100vh;
+            background-color: var(--bg-color, #f8fafc);
+            margin: 0;
+            font-family: inherit;
         }
 
         .signup-box {
             display: flex;
             justify-content: center;
             flex-direction: column;
-            width: 440px;
-            height: 480px;
-            padding: 30px;
+            width: 100%;
+            max-width: 440px;
+            padding: 35px;
+            background: #ffffff;
+            border-radius: var(--radius, 12px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color, #e2e8f0);
+            box-sizing: border-box;
         }
 
         .signup-header {
             text-align: center;
-            margin: 20px 0 40px 0;
+            margin-bottom: 25px;
         }
 
-            .signup-header header {
-                color: #1e3a8a;
-                font-size: 30px;
-                font-weight: 600;
-            }
+        .signup-header h2 {
+            color: #1e3a8a;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .input-box {
+            margin-bottom: 15px;
+        }
 
         .input-box .input-field {
             width: 100%;
-            height: 60px;
-            font-size: 17px;
-            padding: 0 25px;
-            margin-bottom: 15px;
-            border-radius: 30px;
-            border: none;
-            box-shadow: 0px 5px 10px 1px rgba(0,0,0,0.05);
+            height: 50px;
+            font-size: 15px;
+            padding: 0 20px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            box-sizing: border-box;
             outline: none;
-            transition: .3s;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
 
-        ::placeholder {
-            font-weight: 500;
-            color: #1e3a8a;
-        }
-
-        .input-field:focus {
-            width: 105%;
-        }
-
-        .forgot {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 40px;
-        }
-
-        section {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            color: #1e3a8a;
-        }
-
-        #check {
-            margin-right: 10px;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-            a:hover {
-                text-decoration: underline;
-            }
-
-        section a {
-            color: #1e3a8a;
-        }
-
-        .input-submit {
-            position: relative;
+        .input-box .input-field:focus {
+            border-color: #1e3a8a;
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.15);
         }
 
         .submit-btn {
             width: 100%;
-            height: 60px;
+            height: 50px;
             background: #1e3a8a;
+            color: #ffffff;
             border: none;
-            border-radius: 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .input-submit label {
-            position: absolute;
-            top: 45%;
-            left: 50%;
-            color: #fff;
-            -webkit-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s;
         }
 
         .submit-btn:hover {
             background: #172554;
-            transform: scale(1.5,1);
         }
 
-        .sign-up-link {
+        .login-link, .guest-link {
             text-align: center;
-            font-size: 15px;
-            margin-top: 20px;
+            font-size: 14px;
+            margin-top: 15px;
+            color: #475569;
         }
 
-            .sign-up-link a {
-                color: #1e3a8a;
-                font-weight: 600;
-            }
-    </style>
+        .login-link a, .guest-link a {
+            color: #1e3a8a;
+            font-weight: 600;
+            text-decoration: none;
+        }
 
-  
+        .login-link a:hover, .guest-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="signup-box">
+        <div class="signup-header">
+            <h2>Create Account</h2>
+        </div>
+
+        <form onsubmit="handleSignup(event)">
+            <div class="input-box">
+                <input type="text" class="input-field" placeholder="Full Name" autocomplete="off" required />
+            </div>
+
+            <div class="input-box">
+                <input type="email" class="input-field" placeholder="Email Address" autocomplete="off" required />
+            </div>
+
+            <div class="input-box">
+                <input type="password" id="password" class="input-field" placeholder="Password" autocomplete="off" required />
+            </div>
+
+            <div class="input-box">
+                <input type="password" id="confirm-password" class="input-field" placeholder="Confirm Password" autocomplete="off" required />
+            </div>
+
+            <button type="submit" class="submit-btn">Sign Up</button>
+        </form>
+
+        <div class="login-link">
+            <p>Already have an account? <a href="login.html">Login</a></p>
+        </div>
+
+        <div class="guest-link">
+            <p><a href="index.html">&larr; Back to Home</a></p>
+        </div>
+    </div>
+
+    <script>
+        function handleSignup(event) {
+            event.preventDefault();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+           
+            alert("Account created successfully!");
+            window.location.href = 'login.html';
+        }
+    </script>
 
 </body>
 </html>

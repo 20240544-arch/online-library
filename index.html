@@ -43,7 +43,7 @@
 </head>
 <body>
 
-  <!-- شريط التنقل المشترك -->
+ 
   <header class="navbar">
     <div class="container nav-container">
       <a href="index.html" class="logo">Alexandria Library</a>
@@ -61,10 +61,10 @@
   </header>
 
   <main>
-    <!-- قسم الواجهة الرئيسية ومحاكي الرتب -->
+   
     <section class="hero">
       <div class="container">
-        <!-- محاكي الرتب للبروتوتايب لتبديل الروابط شكلياً -->
+        
         <div class="role-switcher-box">
           <label for="role-select"><strong>Simulate Role:</strong></label>
           <select id="role-select" onchange="switchRole(this.value)">
@@ -83,13 +83,13 @@
       </div>
     </section>
 
-    <!-- عينة من كروت الكتب للتحقق من الاتساق -->
+    
     <section class="container" style="padding: 3rem 0;">
       <h2 style="margin-bottom: 0.5rem; color: var(--primary-color);">Featured Books</h2>
       <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Sample items demonstrating the standard card layout.</p>
       
       <div class="grid">
-        <!-- كارت تجريبي: متاح -->
+        
         <article class="card">
           <div>
             <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
@@ -103,7 +103,7 @@
           <a href="book-details.html" class="btn btn-secondary" style="text-align: center;">View Details</a>
         </article>
 
-        <!-- كارت تجريبي: مستعار -->
+        
         <article class="card">
           <div>
             <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
@@ -126,7 +126,7 @@
     </div>
   </footer>
 
-  <!-- سكربت واجهة تبديل الرتب لغرض العرض في الـ Prototype -->
+ 
   <script>
     function switchRole(role) {
       const userLinks = document.querySelectorAll('.user-link');
@@ -147,7 +147,7 @@
         authLinks.forEach(el => el.style.display = 'none');
       }
     }
-    // الضبط الافتراضي كـ Guest
+   
     switchRole('guest');
   </script>
 </body>

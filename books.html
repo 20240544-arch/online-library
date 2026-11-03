@@ -4,13 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Alexandria Digital Library | Catalogue</title>
-
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .search-section {
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: var(--radius, 10px);
+            border: 1px solid var(--border-color, #e2e8f0);
+            margin-bottom: 2rem;
+        }
+
+        .search-filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            margin-top: 1rem;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .filter-group input,
+        .filter-group select {
+            padding: 0.6rem 0.8rem;
+            border: 1px solid var(--border-color, #cbd5e1);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .filter-group input:focus,
+        .filter-group select:focus {
+            border-color: var(--primary-color, #1e3a8a);
+        }
+
+        .empty-state {
+            display: none; 
+            text-align: center;
+            padding: 3rem 1rem;
+            background: #ffffff;
+            border-radius: var(--radius, 10px);
+            border: 1px dashed var(--border-color, #cbd5e1);
+            margin-top: 1.5rem;
+        }
+
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
 </head>
 
 <body>
+    
     <header class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo">Alexandria Library</a>
@@ -18,6 +71,8 @@
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="books.html" class="active">Catalogue</a></li>
+                    <li><a href="my-borrowed.html">My Borrowed</a></li>
+                    <li><a href="admin-books.html">Admin Dashboard</a></li>
                     <li><a href="login.html">Login</a></li>
                     <li><a href="signup.html" class="btn btn-primary btn-register">Register</a></li>
                 </ul>
@@ -25,227 +80,161 @@
         </div>
     </header>
 
-    <main class="container">
-        <section class="catalogue-header">
-
-            <h1>Book Catalogue</h1>
-
-            <p>Explore our collection and find your next favorite book.</p>
-
+    <main class="container" style="padding: 2.5rem 0;">
+        <section class="catalogue-header" style="margin-bottom: 2rem;">
+            <h1 style="color: var(--primary-color, #1e3a8a); margin-bottom: 0.5rem;">Book Catalogue</h1>
+            <p style="color: var(--text-muted, #64748b);">Explore our collection and find your next favorite book.</p>
         </section>
 
+       
         <section class="search-section">
-            <h2>Search Books</h2>
-
+            <h2 style="font-size: 1.25rem; color: #1e293b;">Search Books</h2>
             <div class="search-filters">
-
                 <div class="filter-group">
-                    <label for="book-title">Book Title</label>
+                    <label for="book-title"><strong>Book Title</strong></label>
                     <input type="text" id="book-title" name="title" placeholder="Enter book title">
                 </div>
 
                 <div class="filter-group">
-                    <label for="book-author">Author</label>
+                    <label for="book-author"><strong>Author</strong></label>
                     <input type="text" id="book-author" name="author" placeholder="Enter author name">
                 </div>
 
                 <div class="filter-group">
-                    <label for="book-category">Category</label>
+                    <label for="book-category"><strong>Category</strong></label>
                     <select id="book-category" name="category">
-
                         <option value="">All Categories</option>
-
                         <option value="programming">Programming</option>
-
                         <option value="networking">Networking</option>
-
                         <option value="database">Database</option>
-
                         <option value="science">Science</option>
-
                         <option value="literature">Literature</option>
-
                     </select>
                 </div>
 
-                <button type="button" class="btn btn-primary">Search</button>
-
+                <button type="button" class="btn btn-primary" style="height: 42px; padding: 0 1.5rem;">Search</button>
             </div>
         </section>
 
+       
         <section class="books-section">
-            <h2>Books Collection</h2>
-
-            <p class="section-description">Browse our books and explore their details.</p>
+            <h2 style="font-size: 1.4rem; color: #1e293b; margin-bottom: 0.25rem;">Books Collection</h2>
+            <p style="color: var(--text-muted, #64748b); margin-bottom: 1.5rem;">Browse our books and explore their details.</p>
 
             <div class="grid">
                 <article class="card">
-
                     <div>
-                        <span class="badge badge-available">Available</span>
-
-                        <p class="book-id">CS-101</p>
-
-                        <h3>Clean Code</h3>
-
-                        <p class="book-author">By Robert C. Martin</p>
-
-                        <p class="book-category">Category: Programming</p>
-
-                        <p class="book-description">A handbook of agile software craftsmanship focusing on clean code
-                            principles.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                            <span class="badge badge-available">Available</span>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">CS-101</span>
+                        </div>
+                        <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Clean Code</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">By Robert C. Martin</p>
+                        <p style="font-size: 0.8rem; font-weight: 600; color: #1e3a8a; margin-bottom: 0.75rem;">Category: Programming</p>
+                        <p style="font-size: 0.85rem; color: #475569; margin-bottom: 1rem;">A handbook of agile software craftsmanship focusing on clean code principles.</p>
                     </div>
-
-                    <a href="book-details.html" class="btn btn-primary">View Details</a>
-
-                </article>
-
-                <article class="card">
-
-                    <div>
-                        <span class="badge badge-borrowed">Borrowed</span>
-
-                        <p class="book-id">NET-203</p>
-
-                        <h3>Computer Networking</h3>
-
-                        <p class="book-author">By Andrew S. Tanenbaum</p>
-
-                        <p class="book-category">Category: Networking</p>
-
-                        <p class="book-description">An introduction to computer networks, protocols and network
-                            architecture.</p>
-                    </div>
-
-                    <a href="book-details.html" class="btn btn-primary">View Details</a>
-
-                </article>
-
-                <article class="card">
-
-                    <div>
-                        <span class="badge badge-borrowed">Borrowed</span>
-
-                        <p class="book-id">NET-202</p>
-
-                        <h3>Pro C# 10 with .NET 6</h3>
-
-                        <p class="book-author">By Andrew Troelsen</p>
-
-                        <p class="book-category">Category: Programming</p>
-
-                        <p class="book-description">Comprehensive coverage of the C# language architecture and practical
-                            framework features.</p>
-                    </div>
-
-                    <a href="book-details.html" class="btn btn-primary">View Details</a>
-
-                </article>
-
-                <article class="card">
-
-                    <div>
-                        <span class="badge badge-available">Available</span>
-
-                        <p class="book-id">DB-303</p>
-
-                        <h3>Database System Concepts</h3>
-
-                        <p class="book-author">By Abraham Silberschatz</p>
-
-                        <p class="book-category">Category: Database</p>
-
-                        <p class="book-description">Learn database design, SQL and database management systems.</p>
-                    </div>
-
-                    <a href="book-details.html" class="btn btn-primary">View Details</a>
-
-                </article>
-
-                <article class="card">
-
-                    <div>
-                        <span class="badge badge-available">Available</span>
-
-                        <p class="book-id">SCI-404</p>
-
-                        <h3>A Brief History of Time</h3>
-
-                        <p class="book-author">By Stephen Hawking</p>
-
-                        <p class="book-category">Category: Science</p>
-
-                        <p class="book-description">Explore the universe, space, time and the mysteries of physics.</p>
-                    </div>
-
-                    <a href="book-details.html" class="btn btn-primary">View Details</a>
-
+                    <a href="book-details.html" class="btn btn-secondary" style="text-align: center;">View Details</a>
                 </article>
 
                 <article class="card">
                     <div>
-                        <span class="badge badge-available">Available</span>
-
-                        <p class="book-id">AI-505</p>
-
-                        <h3>Artificial Intelligence: A Modern Approach</h3>
-
-                        <p class="book-author">By Stuart Russell</p>
-
-                        <p class="book-category">Category: Programming</p>
-
-                        <p class="book-description">
-                            An introduction to artificial intelligence, its concepts,
-                            algorithms and real-world applications.
-                        </p>
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                            <span class="badge badge-borrowed">Borrowed</span>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">NET-203</span>
+                        </div>
+                        <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Computer Networking</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">By Andrew S. Tanenbaum</p>
+                        <p style="font-size: 0.8rem; font-weight: 600; color: #1e3a8a; margin-bottom: 0.75rem;">Category: Networking</p>
+                        <p style="font-size: 0.85rem; color: #475569; margin-bottom: 1rem;">An introduction to computer networks, protocols and network architecture.</p>
                     </div>
-
-                    <a href="book-details.html" class="btn btn-primary">View Details</a>
+                    <a href="book-details.html" class="btn btn-secondary" style="text-align: center;">View Details</a>
                 </article>
 
                 <article class="card">
                     <div>
-                        <span class="badge badge-borrowed">Borrowed</span>
-
-                        <p class="book-id">LIT-606</p>
-
-                        <h3>Animal Farm</h3>
-
-                        <p class="book-author">By George Orwell</p>
-
-                        <p class="book-category">Category: Literature</p>
-
-                        <p class="book-description">
-                            A classic novel that explores power, politics
-                            and society through an animal fable.
-                        </p>
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                            <span class="badge badge-borrowed">Borrowed</span>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">NET-202</span>
+                        </div>
+                        <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Pro C# 10 with .NET 6</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">By Andrew Troelsen</p>
+                        <p style="font-size: 0.8rem; font-weight: 600; color: #1e3a8a; margin-bottom: 0.75rem;">Category: Programming</p>
+                        <p style="font-size: 0.85rem; color: #475569; margin-bottom: 1rem;">Comprehensive coverage of the C# language architecture and practical framework features.</p>
                     </div>
-
-                    <a href="book-details.html" class="btn btn-primary">View Details</a>
+                    <a href="book-details.html" class="btn btn-secondary" style="text-align: center;">View Details</a>
                 </article>
 
+                <article class="card">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                            <span class="badge badge-available">Available</span>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">DB-303</span>
+                        </div>
+                        <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Database System Concepts</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">By Abraham Silberschatz</p>
+                        <p style="font-size: 0.8rem; font-weight: 600; color: #1e3a8a; margin-bottom: 0.75rem;">Category: Database</p>
+                        <p style="font-size: 0.85rem; color: #475569; margin-bottom: 1rem;">Learn database design, SQL and database management systems.</p>
+                    </div>
+                    <a href="book-details.html" class="btn btn-secondary" style="text-align: center;">View Details</a>
+                </article>
+
+                <article class="card">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                            <span class="badge badge-available">Available</span>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">SCI-404</span>
+                        </div>
+                        <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">A Brief History of Time</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">By Stephen Hawking</p>
+                        <p style="font-size: 0.8rem; font-weight: 600; color: #1e3a8a; margin-bottom: 0.75rem;">Category: Science</p>
+                        <p style="font-size: 0.85rem; color: #475569; margin-bottom: 1rem;">Explore the universe, space, time and the mysteries of physics.</p>
+                    </div>
+                    <a href="book-details.html" class="btn btn-secondary" style="text-align: center;">View Details</a>
+                </article>
+
+                <article class="card">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                            <span class="badge badge-available">Available</span>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">AI-505</span>
+                        </div>
+                        <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Artificial Intelligence: A Modern Approach</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">By Stuart Russell</p>
+                        <p style="font-size: 0.8rem; font-weight: 600; color: #1e3a8a; margin-bottom: 0.75rem;">Category: Programming</p>
+                        <p style="font-size: 0.85rem; color: #475569; margin-bottom: 1rem;">An introduction to artificial intelligence, its concepts, algorithms and real-world applications.</p>
+                    </div>
+                    <a href="book-details.html" class="btn btn-secondary" style="text-align: center;">View Details</a>
+                </article>
+
+                <article class="card">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                            <span class="badge badge-borrowed">Borrowed</span>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">LIT-606</span>
+                        </div>
+                        <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Animal Farm</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">By George Orwell</p>
+                        <p style="font-size: 0.8rem; font-weight: 600; color: #1e3a8a; margin-bottom: 0.75rem;">Category: Literature</p>
+                        <p style="font-size: 0.85rem; color: #475569; margin-bottom: 1rem;">A classic novel that explores power, politics and society through an animal fable.</p>
+                    </div>
+                    <a href="book-details.html" class="btn btn-secondary" style="text-align: center;">View Details</a>
+                </article>
             </div>
 
+        
             <section class="empty-state">
-                <div class="empty-icon">
-                    <span>📚</span>
-                </div>
-
-                <h3>Empty State Preview</h3>
-
-                <p>
-                    We couldn't find any books matching your search.
-                    Try another title, author, or category.
-                </p>
+                <div class="empty-icon"><span>📚</span></div>
+                <h3>No Books Found</h3>
+                <p style="color: var(--text-muted);">We couldn't find any books matching your search. Try another title, author, or category.</p>
             </section>
         </section>
     </main>
 
     <footer>
-    <div class="container">
-      <p>&copy; 2026 Alexandria Digital Library - IS231 Web Technology Phase 1 Project.</p>
-    </div>
-  </footer>
+        <div class="container">
+            <p>&copy; 2026 Alexandria Digital Library - IS231 Web Technology Phase 1 Project.</p>
+        </div>
+    </footer>
 </body>
 
 </html>
