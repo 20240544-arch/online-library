@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Alexandria Digital Library | My Borrowed Books</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <!-- Navbar (logged-in user) -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Alexandria Library</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="books.html">Catalogue</a></li>
+                    <li><a href="my-borrowed.html" class="active">My Borrowed</a></li>
+                    <li><span class="role-badge">User</span></li>
+                    <li><a href="index.html" class="btn btn-secondary btn-logout">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="catalogue-header">
+            <h1>My Borrowed Books</h1>
+            <p>Track the books you currently have and return them when you are done.</p>
+        </section>
+
+        <!-- Return alert -->
+        <div id="return-alert" class="alert alert-success" role="status" hidden>
+            <span id="return-alert-text"></span>
+            <button type="button" class="alert-close" id="alert-close" aria-label="Close message">&times;</button>
+        </div>
+
+        <!-- Borrowed filter -->
+        <section class="search-section">
+            <h2>Filter My Books</h2>
+
+            <div class="borrowed-filters">
+                <div class="filter-group">
+                    <label for="borrowed-title">Book Title</label>
+                    <input type="text" id="borrowed-title" name="title" placeholder="Search in my borrowed books">
+                </div>
+
+                <div class="filter-group">
+                    <label for="borrowed-category">Category</label>
+                    <select id="borrowed-category" name="category">
+                        <option value="">All Categories</option>
+                        <option value="programming">Programming</option>
+                        <option value="networking">Networking</option>
+                        <option value="database">Database</option>
+                        <option value="science">Science</option>
+                        <option value="literature">Literature</option>
+                    </select>
+                </div>
+
+                <button type="button" class="btn btn-primary">Filter</button>
+            </div>
+        </section>
+
+        <section class="books-section">
+            <div class="borrowed-summary">
+                <h2>Current Borrowed Books</h2>
+                <p class="borrowed-count">
+                    You currently have <strong id="borrowed-count">3</strong> borrowed book(s).
+                </p>
+            </div>
+
+            <div class="grid" id="borrowed-grid">
+
+                <article class="card borrowed-card">
+                    <div>
+                        <span class="badge badge-borrowed">Borrowed</span>
+                        <p class="book-id">NET-203</p>
+                        <h3>Computer Networking</h3>
+                        <p class="book-author">By Andrew S. Tanenbaum</p>
+                        <p class="book-category">Category: Networking</p>
+
+                        <dl class="borrow-dates">
+                            <div>
+                                <dt>Borrowed on</dt>
+                                <dd>20 Oct 2026</dd>
+                            </div>
+                            <div>
+                                <dt>Due date</dt>
+                                <dd>17 Nov 2026</dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <div class="card-actions">
+                        <a href="book-details.html" class="btn btn-secondary">View Details</a>
+                        <button type="button" class="btn btn-primary btn-return">Return Book</button>
+                    </div>
+                </article>
+
+                <article class="card borrowed-card">
+                    <div>
+                        <span class="badge badge-borrowed">Borrowed</span>
+                        <p class="book-id">NET-202</p>
+                        <h3>Pro C# 10 with .NET 6</h3>
+                        <p class="book-author">By Andrew Troelsen</p>
+                        <p class="book-category">Category: Programming</p>
+
+                        <dl class="borrow-dates">
+                            <div>
+                                <dt>Borrowed on</dt>
+                                <dd>25 Oct 2026</dd>
+                            </div>
+                            <div>
+                                <dt>Due date</dt>
+                                <dd>22 Nov 2026</dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <div class="card-actions">
+                        <a href="book-details.html" class="btn btn-secondary">View Details</a>
+                        <button type="button" class="btn btn-primary btn-return">Return Book</button>
+                    </div>
+                </article>
+
+                <article class="card borrowed-card">
+                    <div>
+                        <span class="badge badge-borrowed">Borrowed</span>
+                        <p class="book-id">LIT-606</p>
+                        <h3>Animal Farm</h3>
+                        <p class="book-author">By George Orwell</p>
+                        <p class="book-category">Category: Literature</p>
+
+                        <dl class="borrow-dates">
+                            <div>
+                                <dt>Borrowed on</dt>
+                                <dd>01 Nov 2026</dd>
+                            </div>
+                            <div>
+                                <dt>Due date</dt>
+                                <dd>29 Nov 2026</dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <div class="card-actions">
+                        <a href="book-details.html" class="btn btn-secondary">View Details</a>
+                        <button type="button" class="btn btn-primary btn-return">Return Book</button>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Empty state (no borrowed books) -->
+            <section class="empty-state" id="empty-state" hidden>
+                <div class="empty-icon">
+                    <span>📖</span>
+                </div>
+
+                <h3>No Borrowed Books</h3>
+
+                <p>
+                    You have no borrowed books right now.
+                    Browse the catalogue and borrow your next read.
+                </p>
+
+                <a href="books.html" class="btn btn-primary btn-empty">Browse Catalogue</a>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Alexandria Digital Library - IS231 Web Technology Phase 1 Project.</p>
+        </div>
+    </footer>
+
+    <!-- Prototype return (non storage) -->
+    <script>
+        const grid = document.getElementById('borrowed-grid');
+        const countEl = document.getElementById('borrowed-count');
+        const alertBox = document.getElementById('return-alert');
+        const alertText = document.getElementById('return-alert-text');
+        const emptyState = document.getElementById('empty-state');
+
+        grid.addEventListener('click', function (e) {
+            const btn = e.target.closest('.btn-return');
+            if (!btn) return;
+
+            const card = btn.closest('.borrowed-card');
+            const title = card.querySelector('h3').textContent;
+            const badge = card.querySelector('.badge');
+
+            // Mark card as returned
+            badge.textContent = 'Returned';
+            badge.classList.remove('badge-borrowed');
+            badge.classList.add('badge-available');
+            card.classList.add('is-returned');
+
+            btn.textContent = 'Returned';
+            btn.disabled = true;
+
+            // Update count
+            const remaining = grid.querySelectorAll('.borrowed-card:not(.is-returned)').length;
+            countEl.textContent = remaining;
+
+            // Success msg
+            alertText.textContent = '"' + title + '" was returned successfully.';
+            alertBox.hidden = false;
+
+            // Show empty state if none left
+            if (remaining === 0) {
+                emptyState.hidden = false;
+            }
+        });
+
+        // Close alert
+        document.getElementById('alert-close').addEventListener('click', function () {
+            alertBox.hidden = true;
+        });
+    </script>
+</body>
+
+</html>
