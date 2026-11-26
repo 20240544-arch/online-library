@@ -8,14 +8,12 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-        body {
+        .auth-main {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            background-color: var(--bg-color, #f8fafc);
-            margin: 0;
-            font-family: inherit;
+            padding: 24px 16px;
         }
 
         .login-box {
@@ -44,22 +42,6 @@
             margin: 0;
         }
 
-        .role-selection {
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 25px;
-            color: #475569;
-            font-size: 15px;
-            font-weight: 500;
-        }
-
-        .role-selection label {
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
         .input-box {
             margin-bottom: 15px;
         }
@@ -81,6 +63,17 @@
             box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.15);
         }
 
+        /* :valid / :invalid styling (shown after the user visits a field or tries to submit) */
+        .input-box .input-field.touched:valid,
+        .was-submitted .input-box .input-field:valid {
+            border-color: #16a34a;
+        }
+
+        .input-box .input-field.touched:invalid,
+        .was-submitted .input-box .input-field:invalid {
+            border-color: #dc2626;
+        }
+
         .forgot {
             display: flex;
             justify-content: space-between;
@@ -97,6 +90,10 @@
 
         #check {
             margin-right: 8px;
+            cursor: pointer;
+        }
+
+        .forgot label {
             cursor: pointer;
         }
 
@@ -126,83 +123,101 @@
             background: #172554;
         }
 
-        .sign-up-link, .guest-link {
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .sign-up-link,
+        .guest-link {
             text-align: center;
             font-size: 14px;
             margin-top: 15px;
             color: #475569;
         }
 
-        .sign-up-link a, .guest-link a {
+        .sign-up-link a,
+        .guest-link a {
             color: #1e3a8a;
             font-weight: 600;
             text-decoration: none;
         }
 
-        .sign-up-link a:hover, .guest-link a:hover {
+        .sign-up-link a:hover,
+        .guest-link a:hover {
             text-decoration: underline;
+        }
+
+        .form-message {
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 14.4px;
+            font-weight: 600;
+        }
+
+        .form-message-error {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .form-message-success {
+            background: #dcfce7;
+            color: #16a34a;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="login-box">
-        <div class="login-header">
-            <h2>Login</h2>
+    <!-- Navbar is built by nav.js from the session role -->
+    <header class="navbar" id="navbar"></header>
+
+    <main class="auth-main">
+        <div class="login-box">
+            <div class="login-header">
+                <h2>Login</h2>
+            </div>
+
+            <p id="form-message" class="form-message" role="alert" hidden></p>
+
+            <form id="login-form">
+                <div class="input-box">
+                    <input type="text" id="username" name="username" class="input-field" placeholder="Username"
+                        autocomplete="username" required>
+                </div>
+
+                <div class="input-box">
+                    <input type="password" id="password" name="password" class="input-field" placeholder="Password"
+                        autocomplete="current-password" required>
+                </div>
+
+                <div class="forgot">
+                    <section>
+                        <input type="checkbox" id="check" />
+                        <label for="check">Remember Me</label>
+                    </section>
+                    <a href="#">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submit">Sign In</button>
+            </form>
+
+            <div class="sign-up-link">
+                <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+            </div>
+
+            <div class="guest-link">
+                <p><a href="index.html">&larr; Back to Home</a></p>
+            </div>
         </div>
+    </main>
 
-        <form onsubmit="handleLogin(event)">
-            <div class="role-selection">
-                <label>
-                    <input type="radio" name="role" value="user" checked> User
-                </label>
-                <label>
-                    <input type="radio" name="role" value="admin"> Admin
-                </label>
-            </div>
-
-            <div class="input-box">
-                <input type="email" class="input-field" placeholder="Email" autocomplete="off" required />
-            </div>
-
-            <div class="input-box">
-                <input type="password" class="input-field" placeholder="Password" autocomplete="off" required />
-            </div>
-
-            <div class="forgot">
-                <section>
-                    <input type="checkbox" id="check" />
-                    <label for="check" style="cursor: pointer;">Remember Me</label>
-                </section>
-                <a href="#">Forgot password?</a>
-            </div>
-
-            <button type="submit" class="submit-btn">Sign In</button>
-        </form>
-
-        <div class="sign-up-link">
-            <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
-        </div>
-
-        <div class="guest-link">
-            <p><a href="index.html">&larr; Back to Home</a></p>
-        </div>
-    </div>
-
-    <script>
-        function handleLogin(event) {
-            event.preventDefault();
-            const selectedRole = document.querySelector('input[name="role"]:checked').value;
-            
-            
-            if (selectedRole === 'admin') {
-                window.location.href = 'admin-books.html';
-            } else {
-                window.location.href = 'index.html';
-            }
-        }
-    </script>
-
+    <script src="js/storage.js" defer></script>
+    <script src="js/auth.js" defer></script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/validation.js" defer></script>
+    <script src="js/login.js" defer></script>
 </body>
+
 </html>
