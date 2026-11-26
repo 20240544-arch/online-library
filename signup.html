@@ -8,14 +8,12 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-        body {
+        .auth-main {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            background-color: var(--bg-color, #f8fafc);
-            margin: 0;
-            font-family: inherit;
+            padding: 24px 16px;
         }
 
         .signup-box {
@@ -57,12 +55,24 @@
             border: 1px solid #cbd5e1;
             box-sizing: border-box;
             outline: none;
+            background: #ffffff;
             transition: border-color 0.2s, box-shadow 0.2s;
         }
 
         .input-box .input-field:focus {
             border-color: #1e3a8a;
             box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.15);
+        }
+
+        /* :valid / :invalid styling (shown after the user visits a field or tries to submit) */
+        .input-box .input-field.touched:valid,
+        .was-submitted .input-box .input-field:valid {
+            border-color: #16a34a;
+        }
+
+        .input-box .input-field.touched:invalid,
+        .was-submitted .input-box .input-field:invalid {
+            border-color: #dc2626;
         }
 
         .submit-btn {
@@ -83,77 +93,114 @@
             background: #172554;
         }
 
-        .login-link, .guest-link {
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .login-link,
+        .guest-link {
             text-align: center;
             font-size: 14px;
             margin-top: 15px;
             color: #475569;
         }
 
-        .login-link a, .guest-link a {
+        .login-link a,
+        .guest-link a {
             color: #1e3a8a;
             font-weight: 600;
             text-decoration: none;
         }
 
-        .login-link a:hover, .guest-link a:hover {
+        .login-link a:hover,
+        .guest-link a:hover {
             text-decoration: underline;
+        }
+
+        .form-message {
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 14.4px;
+            font-weight: 600;
+        }
+
+        .form-message-error {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .form-message-success {
+            background: #dcfce7;
+            color: #16a34a;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="signup-box">
-        <div class="signup-header">
-            <h2>Create Account</h2>
+    <!-- Navbar is built by nav.js from the session role -->
+    <header class="navbar" id="navbar"></header>
+
+    <main class="auth-main">
+        <div class="signup-box">
+            <div class="signup-header">
+                <h2>Create Account</h2>
+            </div>
+
+            <p id="form-message" class="form-message" role="alert" hidden></p>
+
+            <form id="signup-form">
+                <div class="input-box">
+                    <input type="text" id="username" name="username" class="input-field" placeholder="Username"
+                        autocomplete="username" required minlength="3" maxlength="20" pattern="[A-Za-z0-9_]+"
+                        title="3 to 20 characters: letters, digits and underscores only.">
+                </div>
+
+                <div class="input-box">
+                    <input type="email" id="email" name="email" class="input-field" placeholder="Email Address"
+                        autocomplete="email" required>
+                </div>
+
+                <div class="input-box">
+                    <input type="password" id="password" name="password" class="input-field" placeholder="Password"
+                        autocomplete="new-password" required minlength="8"
+                        pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}"
+                        title="At least 8 characters, with an uppercase letter, a lowercase letter and a digit.">
+                </div>
+
+                <div class="input-box">
+                    <input type="password" id="confirm-password" name="confirmPassword" class="input-field"
+                        placeholder="Confirm Password" autocomplete="new-password" required>
+                </div>
+
+                <div class="input-box">
+                    <select id="role" name="role" class="input-field" required>
+                        <option value="">Select your role</option>
+                        <option value="user">User</option>
+                        <option value="admin">Administrator</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submit">Sign Up</button>
+            </form>
+
+            <div class="login-link">
+                <p>Already have an account? <a href="login.html">Login</a></p>
+            </div>
+
+            <div class="guest-link">
+                <p><a href="index.html">&larr; Back to Home</a></p>
+            </div>
         </div>
+    </main>
 
-        <form onsubmit="handleSignup(event)">
-            <div class="input-box">
-                <input type="text" class="input-field" placeholder="Full Name" autocomplete="off" required />
-            </div>
-
-            <div class="input-box">
-                <input type="email" class="input-field" placeholder="Email Address" autocomplete="off" required />
-            </div>
-
-            <div class="input-box">
-                <input type="password" id="password" class="input-field" placeholder="Password" autocomplete="off" required />
-            </div>
-
-            <div class="input-box">
-                <input type="password" id="confirm-password" class="input-field" placeholder="Confirm Password" autocomplete="off" required />
-            </div>
-
-            <button type="submit" class="submit-btn">Sign Up</button>
-        </form>
-
-        <div class="login-link">
-            <p>Already have an account? <a href="login.html">Login</a></p>
-        </div>
-
-        <div class="guest-link">
-            <p><a href="index.html">&larr; Back to Home</a></p>
-        </div>
-    </div>
-
-    <script>
-        function handleSignup(event) {
-            event.preventDefault();
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirm-password').value;
-
-            if (password !== confirmPassword) {
-                alert("Passwords do not match!");
-                return;
-            }
-
-           
-            alert("Account created successfully!");
-            window.location.href = 'login.html';
-        }
-    </script>
-
+    <script src="js/storage.js" defer></script>
+    <script src="js/auth.js" defer></script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/validation.js" defer></script>
+    <script src="js/signup.js" defer></script>
 </body>
+
 </html>
