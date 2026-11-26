@@ -1,4 +1,4 @@
-/* signup.js - sign up page
+/* 
  * HTML5 (in signup.html): required, length, pattern, email type and the role select.
  * JS here: confirm password, username/email already used, spaces only.
  * Then registerUser() from auth.js saves the user.
