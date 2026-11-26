@@ -62,6 +62,8 @@ ASSUMPTIONS
   7. Admins share one catalogue and can edit any book's text fields, never its status or borrower.
   8. A deleted user account invalidates that session on the next page load.
   9. Dates are saved as ISO strings (YYYY-MM-DD) and shown to the user in a readable format.
+  10. Passwords are not trimmed; every other text field is trimmed.
+  11. "Remember Me" and "Forgot password" are visual only. Home shows the 3 newest books (or an empty state).
 
 WHY localStorage IS NOT SAFE FOR REAL CREDENTIALS
 Anyone who opens the browser DevTools can read and edit everything in localStorage and sessionStorage,
