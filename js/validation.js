@@ -1,4 +1,4 @@
-/* validation.js - helper functions for the forms
+/*
  * HTML5 attributes (required, pattern, minlength...) do most of the validation.
  * These functions only cover what HTML5 can't: spaces only, comparing two fields,
  * and checking the stored data. Errors are shown with setCustomValidity().
