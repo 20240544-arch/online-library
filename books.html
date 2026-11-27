@@ -45,8 +45,8 @@
             border-color: var(--primary-color, #1e3a8a);
         }
 
+        /* shown or hidden with the hidden attribute from books.js */
         .empty-state {
-            display: none; 
             text-align: center;
             padding: 3rem 1rem;
             background: #ffffff;
@@ -59,26 +59,24 @@
             font-size: 3rem;
             margin-bottom: 0.5rem;
         }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.5rem;
+        }
+
+        .card .btn {
+            text-align: center;
+        }
     </style>
 </head>
 
-<body>
-    
-    <header class="navbar">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">Alexandria Library</a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="books.html" class="active">Catalogue</a></li>
-                    <li><a href="my-borrowed.html">My Borrowed</a></li>
-                    <li><a href="admin-books.html">Admin Dashboard</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="signup.html" class="btn btn-primary btn-register">Register</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<body hidden>
+
+    <!-- Navbar is built by nav.js from the session role -->
+    <header class="navbar" id="navbar"></header>
 
     <main class="container" style="padding: 2.5rem 0;">
         <section class="catalogue-header" style="margin-bottom: 2rem;">
@@ -86,7 +84,7 @@
             <p style="color: var(--text-muted, #64748b);">Explore our collection and find your next favorite book.</p>
         </section>
 
-       
+
         <section class="search-section">
             <h2 style="font-size: 1.25rem; color: #1e293b;">Search Books</h2>
             <div class="search-filters">
@@ -112,129 +110,37 @@
                     </select>
                 </div>
 
-                <button type="button" class="btn btn-primary" style="height: 42px; padding: 0 1.5rem;">Search</button>
+                <button type="button" id="search-btn" class="btn btn-primary" style="height: 42px; padding: 0 1.5rem;">Search</button>
             </div>
         </section>
 
-       
+
         <section class="books-section">
             <h2 style="font-size: 1.4rem; color: #1e293b; margin-bottom: 0.25rem;">Books Collection</h2>
             <p style="color: var(--text-muted, #64748b); margin-bottom: 1.5rem;">Browse our books and explore their details.</p>
 
-            <div class="grid">
-                <article class="card">
-                    <div>
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-                            <span class="badge badge-available">Available</span>
-                            <span style="font-size: 0.8rem; color: var(--text-muted);">CS-101</span>
-                        </div>
-                        <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Clean Code</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">By Robert C. Martin</p>
-                        <p style="font-size: 0.8rem; font-weight: 600; color: #1e3a8a; margin-bottom: 0.75rem;">Category: Programming</p>
-                        <p style="font-size: 0.85rem; color: #475569; margin-bottom: 1rem;">A handbook of agile software craftsmanship focusing on clean code principles.</p>
-                    </div>
-                    <a href="book-details.html" class="btn btn-secondary" style="text-align: center;">View Details</a>
-                </article>
+            <!-- Cards are made by books.js from the books in storage -->
+            <div class="grid" id="books-grid"></div>
 
-                <article class="card">
-                    <div>
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-                            <span class="badge badge-borrowed">Borrowed</span>
-                            <span style="font-size: 0.8rem; color: var(--text-muted);">NET-203</span>
-                        </div>
-                        <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Computer Networking</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">By Andrew S. Tanenbaum</p>
-                        <p style="font-size: 0.8rem; font-weight: 600; color: #1e3a8a; margin-bottom: 0.75rem;">Category: Networking</p>
-                        <p style="font-size: 0.85rem; color: #475569; margin-bottom: 1rem;">An introduction to computer networks, protocols and network architecture.</p>
-                    </div>
-                    <a href="book-details.html" class="btn btn-secondary" style="text-align: center;">View Details</a>
-                </article>
-
-                <article class="card">
-                    <div>
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-                            <span class="badge badge-borrowed">Borrowed</span>
-                            <span style="font-size: 0.8rem; color: var(--text-muted);">NET-202</span>
-                        </div>
-                        <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Pro C# 10 with .NET 6</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">By Andrew Troelsen</p>
-                        <p style="font-size: 0.8rem; font-weight: 600; color: #1e3a8a; margin-bottom: 0.75rem;">Category: Programming</p>
-                        <p style="font-size: 0.85rem; color: #475569; margin-bottom: 1rem;">Comprehensive coverage of the C# language architecture and practical framework features.</p>
-                    </div>
-                    <a href="book-details.html" class="btn btn-secondary" style="text-align: center;">View Details</a>
-                </article>
-
-                <article class="card">
-                    <div>
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-                            <span class="badge badge-available">Available</span>
-                            <span style="font-size: 0.8rem; color: var(--text-muted);">DB-303</span>
-                        </div>
-                        <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Database System Concepts</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">By Abraham Silberschatz</p>
-                        <p style="font-size: 0.8rem; font-weight: 600; color: #1e3a8a; margin-bottom: 0.75rem;">Category: Database</p>
-                        <p style="font-size: 0.85rem; color: #475569; margin-bottom: 1rem;">Learn database design, SQL and database management systems.</p>
-                    </div>
-                    <a href="book-details.html" class="btn btn-secondary" style="text-align: center;">View Details</a>
-                </article>
-
-                <article class="card">
-                    <div>
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-                            <span class="badge badge-available">Available</span>
-                            <span style="font-size: 0.8rem; color: var(--text-muted);">SCI-404</span>
-                        </div>
-                        <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">A Brief History of Time</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">By Stephen Hawking</p>
-                        <p style="font-size: 0.8rem; font-weight: 600; color: #1e3a8a; margin-bottom: 0.75rem;">Category: Science</p>
-                        <p style="font-size: 0.85rem; color: #475569; margin-bottom: 1rem;">Explore the universe, space, time and the mysteries of physics.</p>
-                    </div>
-                    <a href="book-details.html" class="btn btn-secondary" style="text-align: center;">View Details</a>
-                </article>
-
-                <article class="card">
-                    <div>
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-                            <span class="badge badge-available">Available</span>
-                            <span style="font-size: 0.8rem; color: var(--text-muted);">AI-505</span>
-                        </div>
-                        <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Artificial Intelligence: A Modern Approach</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">By Stuart Russell</p>
-                        <p style="font-size: 0.8rem; font-weight: 600; color: #1e3a8a; margin-bottom: 0.75rem;">Category: Programming</p>
-                        <p style="font-size: 0.85rem; color: #475569; margin-bottom: 1rem;">An introduction to artificial intelligence, its concepts, algorithms and real-world applications.</p>
-                    </div>
-                    <a href="book-details.html" class="btn btn-secondary" style="text-align: center;">View Details</a>
-                </article>
-
-                <article class="card">
-                    <div>
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-                            <span class="badge badge-borrowed">Borrowed</span>
-                            <span style="font-size: 0.8rem; color: var(--text-muted);">LIT-606</span>
-                        </div>
-                        <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Animal Farm</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">By George Orwell</p>
-                        <p style="font-size: 0.8rem; font-weight: 600; color: #1e3a8a; margin-bottom: 0.75rem;">Category: Literature</p>
-                        <p style="font-size: 0.85rem; color: #475569; margin-bottom: 1rem;">A classic novel that explores power, politics and society through an animal fable.</p>
-                    </div>
-                    <a href="book-details.html" class="btn btn-secondary" style="text-align: center;">View Details</a>
-                </article>
-            </div>
-
-        
-            <section class="empty-state">
+            <section class="empty-state" id="books-empty" hidden>
                 <div class="empty-icon"><span>📚</span></div>
-                <h3>No Books Found</h3>
-                <p style="color: var(--text-muted);">We couldn't find any books matching your search. Try another title, author, or category.</p>
+                <h3 id="empty-title">No Books Found</h3>
+                <p id="empty-text" style="color: var(--text-muted);">We couldn't find any books matching your search. Try another title, author, or category.</p>
             </section>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Alexandria Digital Library - IS231 Web Technology Phase 1 Project.</p>
+            <p>&copy; 2026 Alexandria Digital Library - IS231 Web Technology Project.</p>
         </div>
     </footer>
+
+    <script src="js/storage.js" defer></script>
+    <script src="js/auth.js" defer></script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/validation.js" defer></script>
+    <script src="js/books.js" defer></script>
 </body>
 
 </html>
